@@ -23,13 +23,12 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                echo 'DD-API-KEY= ${env.DD-API-KEY}'
-                echo 'DATADOG_SITE= ${env.DATADOG_SITE}'
-                echo 'DD-ENV= ${env.DD-ENV}'
-                echo 'DD_SERVICE= ${env.DD_SERVICE}'
-                echo 'DD_TEST_RESULTS_DIR= ${env.DD_TEST_RESULTS_DIR}'
+                echo 'DD-API-KEY='${env.DD-API-KEY}
+                echo 'DATADOG_SITE='${env.DATADOG_SITE}
+                echo 'DD-ENV='${env.DD-ENV}
+                echo 'DD_SERVICE='${env.DD_SERVICE}
+                echo 'DD_TEST_RESULTS_DIR='${env.DD_TEST_RESULTS_DIR}
                 sh 'npm run test'
-                sh 'datadog-ci junit upload --service '
             }
         }
     }
