@@ -6,7 +6,6 @@ pipeline {
     }
     environment {
         DATADOG_API_KEY=credentials('DATADOG-API-KEY')
-        DATADOG_SITE='datadoghq.com'
         DD_ENV='ci'
         DD_SERVICE='bodata'
         DD_TEST_RESULTS_DIR='unit-test-results'
@@ -23,12 +22,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                echo "DATADOG_API_KEY= ${env.DATADOG_API_KEY}"
-                echo "DATADOG_SITE= ${env.DATADOG_SITE}"
-                echo "DD-ENV= ${env.DD_ENV}"
-                echo "DD_SERVICE= ${env.DD_SERVICE}"
-                echo "DD_TEST_RESULTS_DIR= ${env.DD_TEST_RESULTS_DIR}"
                 sh 'npm run test'
+                sh "datadog-ci junit upload --service bodata /unit-test-results"
             }
         }
     }
