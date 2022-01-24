@@ -8,11 +8,15 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('@angular-devkit/build-angular/plugins/karma')
+        require('karma-jasmine'),
+        require('karma-chrome-launcher'),
+        require('@angular-devkit/build-angular/plugins/karma'),
+        require('karma-junit-reporter')
     ],
-    reporters: ['progress'],
+    junitReporter: {
+      useBrowserName: true
+    },
+    reporters: ['progress','junit'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
