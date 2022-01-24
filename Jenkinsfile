@@ -25,7 +25,7 @@ pipeline {
                 echo 'Testing...'
                 echo "DATADOG_API_KEY= ${env.DATADOG_API_KEY}"
                 echo "DATADOG_SITE= ${env.DATADOG_SITE}"
-                echo "DD-ENV= ${env.DD-ENV}"
+                echo "DD-ENV= ${env.DD_ENV}"
                 echo "DD_SERVICE= ${env.DD_SERVICE}"
                 echo "DD_TEST_RESULTS_DIR= ${env.DD_TEST_RESULTS_DIR}"
                 sh 'npm run test'
