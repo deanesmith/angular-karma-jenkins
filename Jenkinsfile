@@ -15,6 +15,7 @@ pipeline {
             steps {
                 echo 'Preparing...'
                 sh 'npm install'
+                sh 'npm install -g @datadog/datadog-ci'
                 echo 'Building...'
                 sh 'npm run build'
             }
