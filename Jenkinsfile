@@ -23,7 +23,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                echo "DD-API-KEY= ${env.DD-API-KEY}"
+                echo "DATADOG_API_KEY= ${env.DATADOG_API_KEY}"
                 echo "DATADOG_SITE= ${env.DATADOG_SITE}"
                 echo "DD-ENV= ${env.DD-ENV}"
                 echo "DD_SERVICE= ${env.DD_SERVICE}"
