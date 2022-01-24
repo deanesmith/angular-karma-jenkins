@@ -14,7 +14,7 @@ module.exports = function (config) {
         require('karma-junit-reporter')
     ],
     junitReporter: {
-      outputDir: 'unit-test-results',
+      outputDir: 'karma-test-results',
       useBrowserName: true
     },
     reporters: ['progress','junit'],
