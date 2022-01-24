@@ -5,10 +5,10 @@ pipeline {
         }
     }
     environment {
-        DD-API-KEY = credentials('DATADOG-API-KEY')
-        DD-ENV = 'ci'
-        DD-SERVICE = 'bodata'
-        DD-TEST-RESULTS-DIR = 'unit-test-results'
+        DD_API_KEY=credentials('DATADOG-API-KEY')
+        DD_ENV='ci'
+        DD_SERVICE='bodata'
+        DD_TEST_RESULTS_DIR='unit-test-results'
     }
     stages {
         stage('Build') {
