@@ -15,7 +15,6 @@ pipeline {
             steps {
                 echo 'Preparing...'
                 sh 'npm install'
-                sh 'npm install -g @datadog/datadog-ci'
                 echo 'Building...'
                 sh 'npm run build'
             }
@@ -24,7 +23,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 sh 'npm run test'
-                sh "datadog-ci junit upload --service bodata /unit-test-results"
+                sh "$(npm bin)/datadog-ci junit upload --service bodata /unit-test-results"
             }
         }
     }
