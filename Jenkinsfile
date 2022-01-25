@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 sh 'npm run test'
-                sh './node_modules/.bin/datadog-ci junit upload --service bodata /unit-test-results'
+                sh './node_modules/.bin/datadog-ci junit upload --service bodata ./unit-test-results'
             }
         }
     }
