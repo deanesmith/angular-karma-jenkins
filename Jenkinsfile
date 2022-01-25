@@ -4,12 +4,6 @@ pipeline {
             image 'buildkite/puppeteer'
         }
     }
-    environment {
-        DATADOG_API_KEY=credentials('DATADOG-API-KEY')
-        DD_ENV='ci'
-        DD_SERVICE='bodata'
-        DD_TEST_RESULTS_DIR='unit-test-results'
-    }
     stages {
         stage('Build') {
             steps {
@@ -20,6 +14,12 @@ pipeline {
             }
         }
         stage('Test') {
+            environment {
+                DATADOG_API_KEY=credentials('DATADOG-API-KEY')
+                DD_ENV='ci'
+                DD_SERVICE='bodata'
+                DD_TEST_RESULTS_DIR='unit-test-results'
+            }
             steps {
                 echo 'Testing...'
                 sh 'npm run test'
