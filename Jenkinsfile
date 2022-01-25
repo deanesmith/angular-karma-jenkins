@@ -23,7 +23,11 @@ pipeline {
             steps {
                 echo 'Testing...'
                 sh 'npm run test'
-                sh './node_modules/.bin/datadog-ci junit upload --service bodata ./karma-test-results'
+            }
+            post {
+                always {
+                    sh './node_modules/.bin/datadog-ci junit upload --service bodata ./karma-test-results'
+                }
             }
         }
     }
