@@ -16,7 +16,7 @@ pipeline {
         stage('Test') {
             environment {
                 DATADOG_API_KEY=credentials('DATADOG-API-KEY')
-                DD_ENV='ci'
+                DD_ENV='local'
                 DD_SERVICE='bodata'
                 DD_TEST_RESULTS_DIR='unit-test-results'
             }
@@ -24,7 +24,7 @@ pipeline {
                 echo 'Testing...'
                 sh 'npm run test'
                 sh """ echo "Build number in sh script: ${env.DATADOG_API_KEY} """
-                sh './node_modules/.bin/datadog-ci junit upload --service bodata ./unit-test-results'
+                sh './node_modules/.bin/datadog-ci junit upload --service bodata ./karma-test-results'
             }
         }
     }
