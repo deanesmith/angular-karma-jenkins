@@ -26,7 +26,7 @@ pipeline {
             }
             post {
                 always {
-                    sh './node_modules/.bin/datadog-ci junit upload --service bodata ./TEST*.xml'
+                    sh './node_modules/.bin/datadog-ci junit upload --service bodata ./*.xml'
                 }
             }
         }
